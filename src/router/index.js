@@ -30,6 +30,7 @@ export default new Router({
 =======
 import homePage from "./homePage/index"
 import BuyTicket from "./BuyTicket"
+import cinemaSearch from "./cinemaSearch"
 Vue.use(Router)
 
 export default new Router({
@@ -39,6 +40,7 @@ export default new Router({
       path:"/",
       redirect:"/BuyTicket"
     },
+    cinemaSearch,
     discover,
     homePage,
     BuyTicket
