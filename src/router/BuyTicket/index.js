@@ -3,28 +3,53 @@ export default{
    name:"BuyTicket",
    component: () => import("@views/BuyTicket/BuyTicket"),
    meta:{
-       TabBarFlag:true
+       TabBarFlag:true,
+       SectionFlag:true
+       
    },
    children:[
         {
-           path:"/BuyTicket",
-           redirect:"/BuyTicket/movieNow"
+            path:"movie",
+            name:"movie",
+            component: () => import("@views/BuyTicket/BuyTicket"),
+            meta: {
+                TabBarFlag: true,
+                SectionFlag: true
+            },
+            children:[
+                {
+                    path: "movieNow",
+                    name: "movieNow",
+                    component: () => import("@components/BuyTicket/movie/movieNow"),
+                    meta: {
+                        TabBarFlag: true,
+                        SectionFlag: true
+                    },
+                },
+                {
+                    path: "movieComing",
+                    name: "movieComing",
+                    component: () => import("@components/BuyTicket/movie/movieComing"),
+                    meta: {
+                        TabBarFlag: true,
+                        SectionFlag: true
+                    },
+                }    
+            ]
         },
         {
-            path:"movieNow",
-            name:"movieNow",
-            component:()=>import("@components/BuyTicket/movie/movieNow"),
+            path:"cinema",
+            name:"cinema",
+            component: () => import("@components/BuyTicket/cinema/cinema"),
             meta: {
-                TabBarFlag: true
+                TabBarFlag: true,
+                SectionFlag: false
             },
         },
-        {
-            path:"movieComing",
-            name:"movieComing",
-            component:()=>import("@components/BuyTicket/movie/movieComing"),
-            meta: {
-                TabBarFlag: true
-            },
-        }
+         {
+           path: "/",
+           redirect: "/BuyTicket/movie/movieNow"
+       },
+      
    ]
 }

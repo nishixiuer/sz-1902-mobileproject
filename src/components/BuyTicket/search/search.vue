@@ -25,7 +25,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 /* 搜索页面头部 */
     .search_top{
         position: fixed;

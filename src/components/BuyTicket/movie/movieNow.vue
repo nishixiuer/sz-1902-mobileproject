@@ -1,6 +1,7 @@
 <template>
     <div>
         <article>
+            <BScroll>
             <div class="movieArticle">
                 <ul>
                     <li>
@@ -155,6 +156,7 @@
                     </li>
                 </ul>
             </div>
+            </BScroll>
 	    </article>
     </div>
 </template>
@@ -166,7 +168,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 /* 主体 */
     article {
         font-size: .28rem !important;	
@@ -174,8 +176,9 @@ export default {
         
     }
     article .movieArticle{
-        height: 10.4rem;
-        overflow-y:auto; 
+        position: absolute;
+        width:100%;
+        height: max-content;
     }
     article ul li{
         margin-top: .2rem;
