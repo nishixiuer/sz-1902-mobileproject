@@ -11,9 +11,9 @@ server.interceptors.request.use(function(config){
 })
 
 server.interceptors.response.use(function(res){
-    // if(res.statusText == "OK"){
-    //     return  res.data;
-    // }
+    if(res.statusText == "OK"){
+        return  res.data;
+    }
 },function(e){
     return Promise.reject(e);
 })

@@ -1,11 +1,11 @@
 <template>
     <div class="banner">
         <!-- 模块一动画图 -->
-        <div class="banner_animation">
-            <ul>
-                <li v-for="(itm,index) in animation" :key="index">
+        <div class="banner_animation swiper-container">
+            <ul class="swiper-wrapper">
+                <li v-for="(itm,index) in animation" :key="index" class="swiper-slide">
                     <a href="#">
-                    <img :src="'http://movie.miguvideo.com/publish/i_www/' + itm.imgSrc" alt="">
+                    <img  :src="'http://movie.miguvideo.com/publish/i_www/' + itm.imgSrc" alt="">
                     </a>
                 </li>
             </ul>
@@ -14,7 +14,7 @@
         <div class="banner_menu">
             <ul class="clearfix">
                 <li v-for="(item,index) in menus" :key="index" >
-                    <img :src="'http://movie.miguvideo.com/publish/i_www/' + item.imgSrc" alt="">
+                    <img v-if="item.imgSrc !== undefined" :src="'http://movie.miguvideo.com/publish/i_www/' + item.imgSrc" alt="">
                     <span>{{item.name}}</span>
                 </li>
             </ul>
@@ -24,10 +24,32 @@
 
 
 <script>
+import Swiper from 'swiper';
+import 'swiper/dist/css/swiper.min.css';
 import Vuex from 'vuex'
 export default {
     name:"discoverBanner",
+    mounted:function () {
+        var that = this;
+        that.$nextTick(function(){
+            var mySwiper = new Swiper(".swiper-container",{ 
+                autoplay:true, //自动播放
+                observeParents:true, //修改swiper的父元素时，自动初始化swiper
+                /* loop:true, //设置为true 则开启loop模式。loop模式：会在原本slide前后复制若干个slide(默认一个)并在合适的时候切换，让Swiper看起来是循环的。 
+loop模式在与free模式同用时会产生抖动，因为free模式下没有复制slide的时间点。 */
+                observer: true,
+                stopOnLastSlide:false, //
+                reverseDirection:false, //开启反向自动轮播。
+                delay:1000, //切换时间
+                disableOnInteraction: true, // 手动滑动后继续自动播放
+     
+              
+            });
+        })
+        console.log(window.sessionStorage)
+    },
     computed:{
+        
         ...Vuex.mapState({
             animation:state=>state.discover.discover_banner,
             menus:state=>state.discover.discover_menu
@@ -46,11 +68,11 @@ export default {
 .banner_animation{
     width: 100%;
     overflow: hidden;
-    ul{
+    .swiper-wrapper{
         width: 100%;
         display: flex;
         flex-wrap: nowrap;
-        li{  
+        .swiper-slide{  
             width: 100%; 
             height: 100%;
             img{
