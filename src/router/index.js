@@ -1,15 +1,10 @@
 import Vue from 'vue'
 import Router from "vue-router";
 import discover from "./discover"
-<<<<<<< HEAD
 import discoverShopping from './shopping'
-<<<<<<< HEAD
 import homePage from "./homePage/index"
-
-=======
 import search from './search'
 import informations from './informations'
->>>>>>> lqd
 Vue.use(Router)
 
 export default new Router({
@@ -17,15 +12,14 @@ export default new Router({
   routes: [
     {
       path:"/",
-      redirect:"/shopping"
+      redirect:"/FP"
     },
     discover,
     discoverShopping,
-<<<<<<< HEAD
-    homePage
-=======
+    homePage,
     search,
     informations
+<<<<<<< HEAD
 >>>>>>> lqd
 =======
 import homePage from "./homePage/index"
@@ -45,5 +39,7 @@ export default new Router({
     homePage,
     BuyTicket
 >>>>>>> tsh
+=======
+>>>>>>> a8f65c2c6ef3a3a78dfbb96f6ac3aec12f75bb78
   ]
 })

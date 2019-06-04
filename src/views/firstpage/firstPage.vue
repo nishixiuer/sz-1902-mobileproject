@@ -1,34 +1,30 @@
 <template> 
-<<<<<<< HEAD
     <div>
         <Top></Top>   
-=======
-    <div>  
->>>>>>> tsh
         <!-- <mainContent></mainContent> -->
-        <router-view></router-view>
-
+        <mainContent v-if="this.$route.meta.flag"></mainContent>
+        <router-view/>
    </div>  
 </template>
 
 <script>
-import BScroll from "better-scroll"
-<<<<<<< HEAD
-import Top from "../../common/top/top"
-=======
->>>>>>> tsh
-import watchMovie from "../../components/watchMovie/watchMovie"
-import mainContent from "../../components/main/mainContent"
+import Vuex from "vuex"
+import BScroll from "better-scroll";
+import Top from "../../common/top/top";
+// import watchMovie from "../../components/watchMovie/watchMovie"
+import mainContent from "../../components/main/mainContent" 
+import {mainContent1} from '../../api/mainContent';
 export default {
     name:"FP",
     components: {
-<<<<<<< HEAD
         Top,
-=======
->>>>>>> tsh
-        mainContent,
-        watchMovie
+        // watchMovie,
+        mainContent
     },
+    mounted(){
+        //方法一
+        // this.$axios.get("/lovev/miguMovie/data/seeFilmData.jsp")//方法二
+    }
     
 }
 </script>

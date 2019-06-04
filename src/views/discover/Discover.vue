@@ -1,52 +1,49 @@
 <template>
    <BScroll>
-   <div class="page">
-      <!--头部 -->
-      <header>
-         <div class="head">
-            <span class="top">发现</span>
-<<<<<<< HEAD
-            <a href="/search">
-               <img class="searchBtn" src="../../../public/imgers/icon/search-btn.png" alt="" />
-=======
-            <a href="#">
-               <img class="searchBtn" src="http://movie.miguvideo.com/lovev/miguMovie/images/icon/search-btn.png" alt="" />
->>>>>>> tsh
-            </a>
-         </div>
-      </header> 
-      <div class="main">
-         <!-- 动画菜单模块 -->
-         <discoverBanner />
-         
-         <!-- 商城模块 -->
-         <discoverShop />
+    <div class="page">
+        <!--头部 -->
+        <header>
+            <div class="head">
+                <span class="top">发现</span>
+                <a href="/search">
+                <img class="searchBtn" src="../../../public/imgers/icon/search-btn.png" alt="" />
+                </a>
+            </div>
+        </header> 
+        <div class="main">
+            <!-- 动画菜单模块 -->
+            <discoverBanner />
+            
+            <!-- 商城模块 -->
+            <discoverShop />
 
-         <!-- 资讯模块 -->
-         <discoverInformation />
-      </div>
-   </div>
+            <!-- 资讯模块 -->
+            <discoverInformation />
+        </div>
+    </div>
    </BScroll>
 </template>
 
 
 <script>
 import Vuex from 'vuex';
-<<<<<<< HEAD
 import discoverBanner from '@components/discover/discover_banner/banner'
 import discoverShop from '@components/discover/discover_shop/shop'
 import discoverInformation from '@components/discover/discover_information/information'
-=======
-import discoverBanner from '@components/discover_banner/banner'
-import discoverShop from '@components/discover_shop/shop'
-import discoverInformation from '@components/discover_information/information'
->>>>>>> tsh
 export default {
     name:"Discover",
     components:{
         discoverBanner,
         discoverShop,
         discoverInformation
+    },
+    methods:{
+        ...Vuex.mapActions({
+            discoverData:"discover/discoverData"
+        })
+    },
+    created(){
+        this.discoverData();
     }
    
 
