@@ -46,6 +46,7 @@ import Vuex from 'vuex'
 export default {
     name:'discoverInformation',
     computed:{
+       
        ...Vuex.mapState({
           iformation:state=>state.discover.discover_information
        })

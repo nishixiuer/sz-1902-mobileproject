@@ -41,7 +41,7 @@ loop模式在与free模式同用时会产生抖动，因为free模式下没有�
                 stopOnLastSlide:false, //
                 reverseDirection:false, //开启反向自动轮播。
                 delay:1000, //切换时间
-                disableOnInteraction: true, // 手动滑动后继续自动播放
+                disableOnInteraction: false, // 手动滑动后继续自动播放
      
               
             });

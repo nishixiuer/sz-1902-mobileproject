@@ -43,6 +43,7 @@
 import Vuex from 'vuex'
 export default {
     name:"discoverShop",
+    
     computed:{
         ...Vuex.mapState({
             shop:state => state.discover.discover_shop
