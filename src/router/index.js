@@ -5,6 +5,7 @@ import discoverShopping from './shopping'
 import homePage from "./homePage/index"
 import search from './search'
 import informations from './informations'
+import BuyTicket from './BuyTicket'
 Vue.use(Router)
 
 export default new Router({
@@ -12,12 +13,13 @@ export default new Router({
   routes: [
     {
       path:"/",
-      redirect:"/FP"
+      redirect:"/discover"
     },
     discover,
     discoverShopping,
     homePage,
     search,
-    informations
+    informations,
+    BuyTicket
   ]
 })
