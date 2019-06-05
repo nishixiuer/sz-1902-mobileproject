@@ -1,6 +1,6 @@
 <template>
     <div class="information">
-        <div class="information_module">
+        <div class="information_module" v-for="(item,index) in iformation" :key="index">
                <!-- 资讯模块时间 -->
                <div class="date">2019年06月01日</div>
                <!-- 资讯模块详情 -->
@@ -15,12 +15,12 @@
                   <!-- 资讯模块详情内容 -->
                   <div class="module_content">
                      <ul>
-                        <li>
+                        <li v-for="(event,index) in item.picList[0].list" :key="index">
                            <a href="#">
                               <div class="article_top">
-                                 <div class="article_left">“X战警：黑凤凰”主创体验中国京剧</div>
+                                 <div class="article_left">{{event.name}}</div>
                                  <div class="article_right">
-                                    <img class="lazy" alt="" src="http://movie.miguvideo.com/publish/poms/image/1502/842/425/201906021238_32_HSJ720H.jpg">
+                                    <img class="lazy" alt="" :src="'http://movie.miguvideo.com/' + event.imgSrcH">
                                  </div>
                               </div>
                            </a>
@@ -28,24 +28,7 @@
                               <div class="article_from">来源：时光网</div>
                               <div class="article_praise">
                                  <i onclick="commentInfos(this,657306907)" class="iconfont">&#xe62a;</i>
-                                 <span style="margin-left:5px;">0</span>
-                              </div>
-                           </div>
-                        </li>
-                        <li>
-                           <a href="#">
-                              <div class="article_top">
-                                 <div class="article_left">“X战警：黑凤凰”主创体验中国京剧</div>
-                                 <div class="article_right">
-                                    <img class="lazy" alt="" src="http://movie.miguvideo.com/publish/poms/image/1502/842/425/201906021238_32_HSJ720H.jpg">
-                                 </div>
-                              </div>
-                           </a>
-                           <div class="article_bottom">
-                              <div class="article_from">来源：时光网</div>
-                              <div class="article_praise">
-                                 <i onclick="commentInfos(this,657306907)" class="iconfont">&#xe62a;</i>
-                                 <span style="margin-left:5px;">0</span>
+                                 <span >0</span>
                               </div>
                            </div>
                         </li>
@@ -61,7 +44,13 @@
 <script>
 import Vuex from 'vuex'
 export default {
-    name:'discoverInformation'
+    name:'discoverInformation',
+    computed:{
+       
+       ...Vuex.mapState({
+          iformation:state=>state.discover.discover_information
+       })
+    }
 }
 </script>
 
@@ -153,6 +142,9 @@ export default {
     .article_praise{
         float: right;
         font-size: 0.3rem;
+      span{
+         margin-left:5px;
+      }
     }
 }
 

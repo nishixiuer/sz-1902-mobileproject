@@ -55,8 +55,8 @@ export default {
 .page{
     position: absolute;
     width: 100%;
-    height: 100%;
     background: #efefef;
+    overflow-x: hidden;
 }
 
 /* 头部 */

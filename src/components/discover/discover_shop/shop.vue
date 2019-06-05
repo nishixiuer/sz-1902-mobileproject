@@ -6,15 +6,15 @@
                 <span class="shop_enter"></span>
             </div>
         </router-link>
-        <div class="shop_main">
+        <div class="shop_main" v-if="shop[0].imgSrc !== undefined">
             <ul>
                 <li>
                     <a href="#">
                     <div class="shop_main_pic">
-                        <img src="http://movie.miguvideo.com/publish/i_www/image/70/118/554.png">
+                        <img :src="'http://movie.miguvideo.com/publish/i_www/'+ shop[0].imgSrc">
                     </div>
                     <div class="shop_main_intro">
-                        <p class="shop_card">30元电影卡</p>
+                        <p class="shop_card">{{shop[0].name}}</p>
                         <p class="shop_money">
                             <span>￥30</span>
                         </p>
@@ -24,10 +24,10 @@
                 <li>
                     <a href="#">
                     <div class="shop_main_pic">
-                        <img src="http://movie.miguvideo.com/publish/i_www/image/70/118/554.png">
+                        <img :src="'http://movie.miguvideo.com/publish/i_www/'+ shop[1].imgSrc">
                     </div>
                     <div class="shop_main_intro">
-                        <p class="shop_card">50元电影卡</p>
+                        <p class="shop_card">{{shop[1].name}}</p>
                         <p class="shop_money">
                             <span>￥50</span>
                         </p>
@@ -44,7 +44,13 @@ import Vuex from 'vuex'
 export default {
     name:"discoverShop",
     
+    computed:{
+        ...Vuex.mapState({
+            shop:state => state.discover.discover_shop
+        })
+    }
 }
+
 </script>
 
 <style lang="scss" scoped>
