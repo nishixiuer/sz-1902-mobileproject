@@ -24,15 +24,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .head{
     border-bottom: 1px solid #E6E6E6;
     height: 0.9rem;
     line-height: 0.9rem;
     padding: 0;
-    position: relative;
+    position: relative; 
     box-sizing: border-box;
     text-align: center;
     background: #fff;
+    width: 100%;
     .top{
         font-size: 0.34rem;
     }
