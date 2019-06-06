@@ -1,29 +1,4 @@
 <template>
-<<<<<<< HEAD
-   <BScroll>
-    <div class="page">
-        <!--头部 -->
-        <header>
-            <div class="head">
-                <span class="top">发现</span>
-                <a href="/search">
-                <img class="searchBtn" src="../../../public/imgers/icon/search-btn.png" alt="" />
-                </a>
-            </div>
-        </header> 
-        <div class="main">
-            <!-- 动画菜单模块 -->
-            <discoverBanner />
-            
-            <!-- 商城模块 -->
-            <discoverShop />
-
-            <!-- 资讯模块 -->
-            <discoverInformation />
-        </div>
-    </div>
-   </BScroll>
-=======
 <div class="wrapper" ref="wrapper">
    <div class="page content">
       <!--头部 -->
@@ -49,7 +24,6 @@
       
    </div>
 </div>
->>>>>>> lqd
 </template>
 
 
