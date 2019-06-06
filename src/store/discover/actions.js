@@ -10,9 +10,9 @@ export default{
         
         commit("mutationsDiscoverData",data)
     },
-    async discoverInformation({commit}){
+   /*  async discoverInformation({commit}){
         let data = await discoverInformationData();
         console.log(data)
         commit("informationData",data)
-    }
+    } */
 }
