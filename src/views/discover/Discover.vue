@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
    <BScroll>
     <div class="page">
         <!--头部 -->
@@ -22,6 +23,33 @@
         </div>
     </div>
    </BScroll>
+=======
+<div class="wrapper" ref="wrapper">
+   <div class="page content">
+      <!--头部 -->
+      <header>
+         <div class="head">
+            <span class="top">发现</span>
+            <a href="/search">
+               <img class="searchBtn" src="../../../public/imgers/icon/search-btn.png" alt="" />
+            </a>
+         </div>
+      </header> 
+      
+      <div class="main">
+         <!-- 动画菜单模块 -->
+         <discoverBanner />
+         
+         <!-- 商城模块 -->
+         <discoverShop />
+
+         <!-- 资讯模块 -->
+         <discoverInformation />
+      </div>
+      
+   </div>
+</div>
+>>>>>>> lqd
 </template>
 
 
@@ -30,6 +58,8 @@ import Vuex from 'vuex';
 import discoverBanner from '@components/discover/discover_banner/banner'
 import discoverShop from '@components/discover/discover_shop/shop'
 import discoverInformation from '@components/discover/discover_information/information'
+import betterScroll from 'better-scroll'
+
 export default {
     name:"Discover",
     components:{
@@ -40,10 +70,18 @@ export default {
     methods:{
         ...Vuex.mapActions({
             discoverData:"discover/discoverData"
-        })
+        }),
+        
     },
     created(){
         this.discoverData();
+    },
+    mounted() {
+      this.$nextTick(() => {
+        this.scroll = new betterScroll(this.$refs.wrapper, {
+            click:true,
+        })
+      })
     }
    
 
@@ -52,11 +90,14 @@ export default {
 
 
 <style  scoped>
+.wrapper{
+   height:100%; 
+}
 .page{
-    position: absolute;
+
     width: 100%;
     background: #efefef;
-    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 /* 头部 */

@@ -11,4 +11,10 @@
   }
 </script>
 <style>
+<<<<<<< HEAD
+=======
+#app{
+  height: 100%;
+}
+>>>>>>> lqd
 </style>
