@@ -17,11 +17,8 @@ server.interceptors.request.use(function(config) {
 
 server.interceptors.response.use(function(res){
     if(res.statusText == "OK"){
-<<<<<<< HEAD
         //axios响应回来的数据res是axios插件自己封装的，是一个对象,下面有很多属性
         //包含网站响应回来的数据res.data,还有状态码res.status等等一些东西
-=======
->>>>>>> lqd
         return  res.data;
     }
 },function(e){

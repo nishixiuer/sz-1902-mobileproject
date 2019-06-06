@@ -5,7 +5,7 @@
             <ul class="swiper-wrapper">
                 <li v-for="(itm,index) in animation" :key="index" class="swiper-slide">
                     <a href="#">
-                    <img  :src="'http://movie.miguvideo.com/publish/i_www/' + itm.imgSrc" alt="">
+                    <img  :src="'http://movie.miguvideo.com/publish/i_www/' + itm.imgSrc" :alt="itm.name">
                     </a>
                 </li>
             </ul>
@@ -33,20 +33,23 @@ export default {
         var that = this;
         that.$nextTick(function(){
             var mySwiper = new Swiper(".swiper-container",{ 
-                autoplay:true, //自动播放
+                autoplay:{
+                    disableOnInteraction: false,
+                    delay:2000, // 手动滑动后继续自动播放
+                    stopOnLastSlide:false, //如果设置为true，当切换到最后一个slide时停止自动切换。
+                    reverseDirection:false, //开启反向自动轮播。
+                }, //自动播放
                 observeParents:true, //修改swiper的父元素时，自动初始化swiper
-                /* loop:true, //设置为true 则开启loop模式。loop模式：会在原本slide前后复制若干个slide(默认一个)并在合适的时候切换，让Swiper看起来是循环的。 
-loop模式在与free模式同用时会产生抖动，因为free模式下没有复制slide的时间点。 */
-                observer: true,
-                stopOnLastSlide:false, //
-                reverseDirection:false, //开启反向自动轮播。
-                delay:1000, //切换时间
-                disableOnInteraction: false, // 手动滑动后继续自动播放
-     
+                /* loop:true, //设置为true 则开启loop模式。loop模式：会在原本slide前后复制若干个slide(默认一个)并在合适的时候切换，让Swiper看起来是循环的。 loop模式在与free模式同用时会产生抖动，因为free模式下没有复制slide的时间点。 */
+                observer: true,//当改变swiper的样式（例如隐藏/显示）或者修改swiper的子元素时，自动初始化swiper。默认false
               
+                
+                 //切换时间
+               
+     
             });
         })
-        console.log(window.sessionStorage)
+       /*  console.log(window.sessionStorage) */
     },
     computed:{
         
@@ -54,7 +57,8 @@ loop模式在与free模式同用时会产生抖动，因为free模式下没有�
             animation:state=>state.discover.discover_banner,
             menus:state=>state.discover.discover_menu
         })
-    } 
+    },
+   
 }
 </script>
 

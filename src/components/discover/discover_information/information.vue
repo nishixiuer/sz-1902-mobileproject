@@ -2,7 +2,7 @@
     <div class="information">
         <div class="information_module" v-for="(item,index) in iformation" :key="index">
                <!-- 资讯模块时间 -->
-               <div class="date">2019年06月01日</div>
+               <div class="date">{{item.name}}</div>
                <!-- 资讯模块详情 -->
                <div class="module_details">
                   <!-- 资讯模块详情头部 -->
@@ -46,12 +46,15 @@ import Vuex from 'vuex'
 export default {
     name:'discoverInformation',
     computed:{
-       
-       ...Vuex.mapState({
+
+        ...Vuex.mapState({
           iformation:state=>state.discover.discover_information
-       })
-    }
+        }),
+    },
+
 }
+
+
 </script>
 
 
