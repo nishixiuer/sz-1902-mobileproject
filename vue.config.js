@@ -6,9 +6,14 @@ module.exports = {
             "/api":{
                 target:"http://movie.miguvideo.com",
                 changeOrigin:true,
+<<<<<<< HEAD
                 pathRewrite:{//必填
                     "^/api":"/"
 
+=======
+                pathRewrite:{
+                    "^/api":"/"
+>>>>>>> tsh
                 }
             }
         }
