@@ -6,7 +6,8 @@ from "@api/discover"
 
 export default{
     async discoverData({commit}){
-        let data = await discoverData();        
+        let data = await discoverData();
+        
         commit("mutationsDiscoverData",data)
     },
    /*  async discoverInformation({commit}){

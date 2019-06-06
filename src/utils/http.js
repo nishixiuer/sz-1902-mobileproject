@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 const server = axios.create({
-<<<<<<< HEAD
     baseURL:process.env.BASE_API, //
     withCredentials:true 
 })
@@ -11,18 +10,7 @@ server.interceptors.request.use((config)=>{
     config.headers = {//设置请求头部
         'Content--Type':'application/x-www-form-urlencoded;charset=UTF-8'
     }
-=======
-    baseURL:process.env.BASE_API,
-    withCredentials:true
-})
 
-server.interceptors.request.use((config)=>{
-     config.data = JSON.stringify(config.data) //返回数据格式
-     config.headers = { //设置请求头部
-         'Content--Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-     }
-
->>>>>>> tsh
     return config;
 },(e)=>{
     return Promise.reject(e);

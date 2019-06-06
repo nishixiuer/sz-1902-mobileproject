@@ -8,8 +8,15 @@
 <script>
   export default {
     name:"App",
+    components:{
+    
+    }
   }
 </script>
+
+
+
+
 <style>
 #app{
   height: 100%;
