@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="BuyTicket">
         <Header/>
         <!--分化区域-->
         <Section  v-if="$route.meta.SectionFlag"/>
@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import Vuex from "vuex"
 import Header from "@common/BuyTicket/header/header"
 import Section from "@common/BuyTicket/section/section"
 export default {
@@ -22,6 +23,8 @@ export default {
 </script>
 
 <style>
-    
+    #BuyTicket{
+        height: 100%;
+    }
 
 </style>

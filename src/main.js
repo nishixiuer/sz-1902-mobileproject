@@ -5,7 +5,6 @@ import store from './store'
 import BScroll from '@common/BScroll/BScroll'
 
 
-
 Vue.config.productionTip = false
 Vue.component("BScroll",BScroll);
 new Vue({

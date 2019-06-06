@@ -1,93 +1,48 @@
 <template>
     <div class="start">
-    <BScroll>
-        <div class="movieComingContent">
-            <p class="movieTime">05月31日<span>周五</span></p>
-            <ul>
-                <li>
-                    <div class="comingPicture">
-                        
-                    </div>
-                    <div class="comingContent">
-                        <p>气血旅馆</p>
-                        <div class="comingContentBottom">
-                            <p>导演：<span>和亚纶</span></p>
-                            <p>黄郁钢|彭于晏|张一三</p>	
+        <BScroll>
+            <div class="movieComingContent">
+                <p class="movieTime">05月31日<span>周五</span></p>
+                <ul>
+                    <li v-for="(item,index) in movieComingList" :key="index" >
+                        <div class="comingPicture">
+                            <img :src="'http://movie.miguvideo.com/'+item.picAddr">
                         </div>
-                    </div>
-                    <div class="movieBtn">
-                        <i class="wish">想看</i><i class="intendPay">预售</i>
-                    </div>
-                </li>
-                <li>
-                    <div class="comingPicture">
-                        
-                    </div>
-                    <div class="comingContent">
-                        <p>气血旅馆</p>
-                        <div class="comingContentBottom">
-                            <p>导演：<span>和亚纶</span></p>
-                            <p>黄郁钢|彭于晏|张一三</p>  
+                        <div class="comingContent">
+                            <p>{{item.filmName}}</p>
+                            <div class="comingContentBottom">
+                                <p>导演：<span>{{item.director}}</span></p>
+                                <p class="actor">{{item.actor}}</p>	
+                            </div>
                         </div>
-                    </div>
-                    <div class="movieBtn">
-                        <i class="wish">想看</i><i class="intendPay">预售</i>
-                    </div>
-                </li>
-                <li>
-                    <div class="comingPicture">
-                        
-                    </div>
-                    <div class="comingContent">
-                        <p>气血旅馆</p>
-                        <div class="comingContentBottom">
-                            <p>导演：<span>和亚纶</span></p>
-                            <p>黄郁钢|彭于晏|张一三</p>  
+                        <div class="movieBtn">
+                            <i :class="item.isPreSale==0? 'wish':'intendPay' ">{{item.isPreSale==0? '想看':'预售'}}</i>
                         </div>
-                    </div>
-                    <div class="movieBtn">
-                        <i class="wish">想看</i><i class="intendPay">预售</i>
-                    </div>
-                </li>
-                <li>
-                    <div class="comingPicture">
-                        
-                    </div>
-                    <div class="comingContent">
-                        <p>气血旅馆</p>
-                        <div class="comingContentBottom">
-                            <p>导演：<span>和亚纶</span></p>
-                            <p>黄郁钢|彭于晏|张一三</p>  
-                        </div>
-                    </div>
-                    <div class="movieBtn">
-                        <i class="wish">想看</i><i class="intendPay">预售</i>
-                    </div>
-                </li>
-                <li>
-                    <div class="comingPicture">
-                        
-                    </div>
-                    <div class="comingContent">
-                        <p>气血旅馆</p>
-                        <div class="comingContentBottom">
-                            <p>导演：<span>和亚纶</span></p>
-                            <p>黄郁钢|彭于晏|张一三</p>  
-                        </div>
-                    </div>
-                    <div class="movieBtn">
-                        <i class="wish">想看</i><i class="intendPay">预售</i>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </BScroll> 
+                    </li>
+                </ul>
+            </div>
+        </BScroll> 
     </div>    
 </template>
 
 <script>
+import Vuex from "vuex";
+import { createDecipher } from 'crypto';
 export default {
-    name:"movieComing"
+    name:"movieComing",
+    methods:{
+        ...Vuex.mapActions({
+            actionsMovieComing:"BuyTicket/actionsMovieComing"
+        })
+    },
+    computed:{
+        ...Vuex.mapState({
+            movieComingList:state => state.BuyTicket.movieComingList,
+        })
+    },
+    created(){
+        this.actionsMovieComing();
+    }
 
 }
 </script>
@@ -126,6 +81,7 @@ export default {
         height: 2rem;
     }
     .movieComingContent ul li .comingContent{
+        width:55%;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
@@ -134,16 +90,21 @@ export default {
         display: flex;
         align-self: center;
     }
-    .movieComingContent ul li .wish{
+    .actor{
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    .wish{
         color: #f74444;
         padding:.1rem .2rem;
         border: 1px solid #F74444;
         border-radius: 5px;
     }
     .intendPay{
-        display: none;
-        border: 1px soid skyblue;
+        border: 1px solid skyblue;
         padding: .1rem .2rem;
         border-radius: 5px;
+        color: skyblue;
     }
 </style>

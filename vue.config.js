@@ -3,9 +3,12 @@ const path = require("path");
 module.exports = {
     devServer:{
         proxy:{
-            "/publish":{
+            "/api":{
                 target:"http://movie.miguvideo.com",
-                changeOrigin:true
+                changeOrigin:true,
+                pathRewrite:{
+                    "^/api":"/"
+                }
             }
         }
     },

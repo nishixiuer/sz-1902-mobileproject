@@ -1,153 +1,18 @@
 <template>
     <div>
         <article>
-            <BScroll>
+            <div class="wrapper" ref="wrapper">
             <div class="movieArticle">
                 <ul>
-                    <li>
+                    <li v-for="(item,index) in movieNowList" v-bind:key="index">
                         <div class="moviePicture">
-                            
+                            <img v-bind:src="'http://movie.miguvideo.com/'+item.picAddr">
                         </div>
                         <div class="movieContent">
-                            <i>五月天人生无限公司</i>
+                            <i>{{item.filmName}}</i>
                             <div>
-                                <p>导演：陈毅</p>
-                                <p>胡歌|彭于晏|吴彦祖|...</p>
-                            </div>
-                        </div>
-                        <div class="movieBuy">
-                            <i>购票</i>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="moviePicture">
-                            
-                        </div>
-                        <div class="movieContent">
-                            <i>五月天人生无限公司</i>
-                            <div>
-                                <p>导演：陈毅</p>
-                                <p>胡歌|彭于晏|吴彦祖|...</p>
-                            </div>
-                        </div>
-                        <div class="movieBuy">
-                            <i>购票</i>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="moviePicture">
-                            
-                        </div>
-                        <div class="movieContent">
-                            <i>五月天人生无限公司</i>
-                            <div>
-                                <p>导演：陈毅</p>
-                                <p>胡歌|彭于晏|吴彦祖|...</p>
-                            </div>
-                        </div>
-                        <div class="movieBuy">
-                            <i>购票</i>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="moviePicture">
-                            
-                        </div>
-                        <div class="movieContent">
-                            <i>五月天人生无限公司</i>
-                            <div>
-                                <p>导演：陈毅</p>
-                                <p>胡歌|彭于晏|吴彦祖|...</p>
-                            </div>
-                        </div>
-                        <div class="movieBuy">
-                            <i>购票</i>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="moviePicture">
-                            
-                        </div>
-                        <div class="movieContent">
-                            <i>五月天人生无限公司</i>
-                            <div>
-                                <p>导演：陈毅</p>
-                                <p>胡歌|彭于晏|吴彦祖|...</p>
-                            </div>
-                        </div>
-                        <div class="movieBuy">
-                            <i>购票</i>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="moviePicture">
-                            
-                        </div>
-                        <div class="movieContent">
-                            <i>五月天人生无限公司</i>
-                            <div>
-                                <p>导演：陈毅</p>
-                                <p>胡歌|彭于晏|吴彦祖|...</p>
-                            </div>
-                        </div>
-                        <div class="movieBuy">
-                            <i>购票</i>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="moviePicture">
-                            
-                        </div>
-                        <div class="movieContent">
-                            <i>五月天人生无限公司</i>
-                            <div>
-                                <p>导演：陈毅</p>
-                                <p>胡歌|彭于晏|吴彦祖|...</p>
-                            </div>
-                        </div>
-                        <div class="movieBuy">
-                            <i>购票</i>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="moviePicture">
-                            
-                        </div>
-                        <div class="movieContent">
-                            <i>五月天人生无限公司</i>
-                            <div>
-                                <p>导演：陈毅</p>
-                                <p>胡歌|彭于晏|吴彦祖|...</p>
-                            </div>
-                        </div>
-                        <div class="movieBuy">
-                            <i>购票</i>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="moviePicture">
-                            
-                        </div>
-                        <div class="movieContent">
-                            <i>五月天人生无限公司</i>
-                            <div>
-                                <p>导演：陈毅</p>
-                                <p>胡歌|彭于晏|吴彦祖|...</p>
-                            </div>
-                        </div>
-                        <div class="movieBuy">
-                            <i>购票</i>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="moviePicture">
-                            
-                        </div>
-                        <div class="movieContent">
-                            <i>五月天人生无限公司</i>
-                            <div>
-                                <p>导演：陈毅</p>
-                                <p>胡歌|彭于晏|吴彦祖|...</p>
+                                <p>导演：<span>{{item.director}}</span></p>
+                                <p class="actor">{{item.actor}}</p>
                             </div>
                         </div>
                         <div class="movieBuy">
@@ -156,29 +21,49 @@
                     </li>
                 </ul>
             </div>
-            </BScroll>
+            </div>
 	    </article>
     </div>
 </template>
 
 <script>
+import betterScroll from "better-scroll"
+import Vuex from "vuex"
 export default {
-    name:"movieNow"
-    
+    name:"movieNow",
+    methods:{
+        ...Vuex.mapActions({
+            actionsMovieNow:"BuyTicket/actionsMovieNow",
+        })
+    },
+    computed:{
+        ...Vuex.mapState({
+            movieNowList:state=>state.BuyTicket.movieNowList,
+        })
+    },
+    created(){
+        this.actionsMovieNow();
+    },
+    mounted(){
+        this.$nextTick(() => {
+        this.scroll = new betterScroll(this.$refs.wrapper, {})
+      })
+    }
 }
 </script>
 
 <style scoped>
 /* 主体 */
+    .wrapper{
+        height:60%;
+    }
     article {
         font-size: .28rem !important;	
-        margin-top: 1.8rem;
-        
+        margin-top: 2rem;
     }
     article .movieArticle{
         position: absolute;
         width:100%;
-        height: max-content;
     }
     article ul li{
         margin-top: .2rem;
@@ -187,7 +72,13 @@ export default {
         display: flex;
         justify-content: space-around;
     }
+    article ul li .actor{
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
     article ul li .movieContent{
+        width: 55%;
         display: flex;
         flex-direction: column;
         justify-content: space-around; 
