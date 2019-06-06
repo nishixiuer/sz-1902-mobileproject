@@ -10,6 +10,7 @@
                 <router-link v-bind:to="{name:'movieNow'}" tag="i">影片</router-link>
                 <router-link v-bind:to="{name:'cinema'}" tag="i">影院</router-link>
             </div>
+            
             <router-link class="iconfont search" v-bind:to="{name:'cinemaSearch'}" tag="div">&#xe615;</router-link>
         </header>
     </div>

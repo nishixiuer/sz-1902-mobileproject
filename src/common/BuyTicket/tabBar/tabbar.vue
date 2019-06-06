@@ -12,6 +12,7 @@ export default {
 	name:"TabBar",
 	data(){
 		return{
+		
 			nav:[
 				{
 					title:"看片",
